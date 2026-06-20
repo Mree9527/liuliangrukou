@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Smart Buying Guide — Honest Tech Reviews</title>
+    <link>https://smartsite.vercel.app</link>
+    <description>Product reviews and buying guides updated daily. We test every product so you don&apos;t have to.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Jun 2026 13:52:08 GMT</lastBuildDate>
+    <atom:link href="https://smartsite.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
+      <item>
+      <title>Best Laptopss</title>
+      <link>https://smartsite.vercel.app/categories/laptops</link>
+      <description>Latest product review and buying guide from Smart Buying Guide.</description>
+      <pubDate>Sat, 20 Jun 2026 13:52:08 GMT</pubDate>
+      <guid>https://smartsite.vercel.app/categories/laptops</guid>
+    </item>
+      <item>
+      <title>Best Mechanical Keyboardss</title>
+      <link>https://smartsite.vercel.app/categories/keyboards</link>
+      <description>Latest product review and buying guide from Smart Buying Guide.</description>
+      <pubDate>Sat, 20 Jun 2026 13:52:08 GMT</pubDate>
+      <guid>https://smartsite.vercel.app/categories/keyboards</guid>
+    </item>
+      <item>
+      <title>Best Wireless Earbudss</title>
+      <link>https://smartsite.vercel.app/categories/earbuds</link>
+      <description>Latest product review and buying guide from Smart Buying Guide.</description>
+      <pubDate>Sat, 20 Jun 2026 13:52:08 GMT</pubDate>
+      <guid>https://smartsite.vercel.app/categories/earbuds</guid>
+    </item>
+      <item>
+      <title>Best Monitorss</title>
+      <link>https://smartsite.vercel.app/categories/monitors</link>
+      <description>Latest product review and buying guide from Smart Buying Guide.</description>
+      <pubDate>Sat, 20 Jun 2026 13:52:08 GMT</pubDate>
+      <guid>https://smartsite.vercel.app/categories/monitors</guid>
+    </item>
+      <item>
+      <title>Best Mices</title>
+      <link>https://smartsite.vercel.app/categories/mice</link>
+      <description>Latest product review and buying guide from Smart Buying Guide.</description>
+      <pubDate>Sat, 20 Jun 2026 13:52:08 GMT</pubDate>
+      <guid>https://smartsite.vercel.app/categories/mice</guid>
+    </item>
+      <item>
+      <title>Best Headphoness</title>
+      <link>https://smartsite.vercel.app/categories/headphones</link>
+      <description>Latest product review and buying guide from Smart Buying Guide.</description>
+      <pubDate>Sat, 20 Jun 2026 13:52:08 GMT</pubDate>
+      <guid>https://smartsite.vercel.app/categories/headphones</guid>
+    </item>
+      <item>
+      <title>Best SSDss</title>
+      <link>https://smartsite.vercel.app/categories/ssd</link>
+      <description>Latest product review and buying guide from Smart Buying Guide.</description>
+      <pubDate>Sat, 20 Jun 2026 13:52:08 GMT</pubDate>
+      <guid>https://smartsite.vercel.app/categories/ssd</guid>
+    </item>
+      <item>
+      <title>Best Webcamss</title>
+      <link>https://smartsite.vercel.app/categories/webcams</link>
+      <description>Latest product review and buying guide from Smart Buying Guide.</description>
+      <pubDate>Sat, 20 Jun 2026 13:52:08 GMT</pubDate>
+      <guid>https://smartsite.vercel.app/categories/webcams</guid>
+    </item>
+      <item>
+      <title>Best Smart Speakerss</title>
+      <link>https://smartsite.vercel.app/categories/speakers</link>
+      <description>Latest product review and buying guide from Smart Buying Guide.</description>
+      <pubDate>Sat, 20 Jun 2026 13:52:08 GMT</pubDate>
+      <guid>https://smartsite.vercel.app/categories/speakers</guid>
+    </item>
+  </channel>
+</rss>
