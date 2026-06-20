@@ -2,15 +2,12 @@ import { generateAllArticles } from '../content/generator.js';
 import { buildSite } from '../site/builder.js';
 import { discoverTrendingContent, saveTrendingData } from '../scraper/trending.js';
 import * as distribution from '../content/distribution.js';
+import { TwitterPoster } from '../automation/twitter-poster.js';
+import { findRealDeals, generateDealOfDay } from '../content/deal-finder.js';
 
 let stats = { 
-  totalRuns: 0, 
-  articlesGenerated: 0, 
-  socialPosts: 0, 
-  newsletterSent: 0,
-  redditPosts: 0,
-  mediumExports: 0,
-  contentDiscoveries: 0, 
+  totalRuns: 0, articlesGenerated: 0, socialPosts: 0, newsletterSent: 0,
+  redditPosts: 0, mediumExports: 0, contentDiscoveries: 0, dealsFound: 0,
   lastRun: null 
 };
 
@@ -18,19 +15,30 @@ export async function runFullPipeline() {
   console.log('\n🚀 === Money Engine v2.0 - Full Pipeline ===\n');
   
   try {
-    // Phase 1: Discover trending content
-    console.log('[Phase 1/5] 🔍 Discovery...');
+    // Phase 1: Discovery
+    console.log('[Phase 1/7] 🔍 Discovering trending products...');
     const content = await discoverTrendingContent();
     stats.contentDiscoveries += (content.hackernews || []).length;
     
     if ((content.hackernews || []).length > 0) {
-      console.log(`   Found ${(content.hackernews).length} trending tech topics`);
+      console.log(`   Found ${(content.hackernews).length} trending topics`);
     } else {
       console.log('   Using evergreen content strategy');
     }
 
-    // Phase 2: Generate all articles
-    console.log('[Phase 2/5] ✍️ Content Generation...');
+    // Phase 2: Find real-time deals
+    console.log('[Phase 2/7] 💰 Scanning for live deals...');
+    const deals = await findRealDeals();
+    stats.dealsFound += deals.length;
+    if (deals.length > 0) {
+      await generateDealOfDay(deals);
+      console.log(`   ✓ Found ${deals.length} deals, deal-of-day generated`);
+    } else {
+      console.log('   Using curated product database for daily deals');
+    }
+
+    // Phase 3: Generate articles
+    console.log('[Phase 3/7] ✍️ Generating content...');
     const articles = generateAllArticles();
     
     if (articles.length === 0) throw new Error('No articles generated');
@@ -40,40 +48,35 @@ export async function runFullPipeline() {
     const prodCount = articles.filter(a => a.type === 'product').length;
     console.log(`   ✓ Generated ${articles.length} articles (${catCount} guides + ${prodCount} reviews)`);
 
-    // Phase 3: Build static site
-    console.log('[Phase 3/5] 🏗️ Site Build...');
+    // Phase 4: Build site
+    console.log('[Phase 4/7] 🏗️ Building website...');
     const outputDir = await buildSite(articles);
     console.log(`   ✓ Static site at ${outputDir}`);
 
-    // Phase 4: Content distribution
-    console.log('[Phase 4/5] 📤 Distribution...');
+    // Phase 5: Multi-platform distribution
+    console.log('[Phase 5/7] 📤 Distribution...');
     
-    // Export for Medium
     const mediumExports = await distribution.exportForMedium(articles);
     stats.mediumExports += mediumExports.length;
-    console.log(`   ✓ ${mediumExports.length} articles exported for Medium`);
     
-    // Generate newsletter
     await distribution.generateNewsletter(articles);
     stats.newsletterSent++;
-    console.log('   ✓ Newsletter generated');
     
-    // Generate Twitter threads
     const twitterThreads = distribution.generateTwitterThreads(articles);
-    stats.socialPosts += twitterThreads.length;
-    console.log(`   ✓ ${twitterThreads.length} Twitter/X threads created`);
     
-    // Generate Reddit posts
     const redditPosts = distribution.generateRedditPosts(articles);
     stats.redditPosts += redditPosts.length;
-    console.log(`   ✓ ${redditPosts.length} Reddit discussion posts ready`);
     
-    // RSS feed
     await distribution.generateRSSFeed(articles);
-    console.log('   ✓ RSS feed ready for Apple Podcasts/Spotify');
 
-    // Phase 5: Save trending data
-    console.log('[Phase 5/5] 💾 Saving trends...');
+    // Phase 6: Social media posting
+    console.log('[Phase 6/7] 🐦 Auto-posting to social media...');
+    const twitterPoster = new TwitterPoster();
+    const socialResults = await twitterPoster.postBatch(articles);
+    stats.socialPosts += (socialResults.posted || []).length;
+
+    // Phase 7: Save trending data
+    console.log('[Phase 7/7] 💾 Saving trends...');
     await saveTrendingData(content);
 
     stats.totalRuns++;
@@ -81,18 +84,14 @@ export async function runFullPipeline() {
 
     console.log(`\n✅ Pipeline complete! Run #${stats.totalRuns}\n`);
     console.log('Revenue streams active:');
-    console.log(`   📊 Amazon Affiliate Links → ${prodCount} product pages ready for clicks`);
-    console.log(`   🔍 SEO Pages → ${catCount} category guides + ${prodCount} reviews indexed by Google`);
-    console.log(`   📧 Newsletter → 1 digest ready (email marketing)`);
-    console.log(`   🐦 Social Media → ${twitterThreads.length} Twitter threads for auto-posting`);
-    console.log(`   🤖 Reddit → ${redditPosts.length} discussion posts for traffic`);
-    console.log(`   🎙️ Podcast/RSS → RSS feed ready for submission`);
+    console.log(`   💰 Amazon Affiliate → ${prodCount} product pages with affiliate links`);
+    console.log(`   🔍 SEO Pages → ${catCount} guides + ${prodCount} reviews for Google`);
+    console.log(`   📧 Newsletter → ready to send via email platform`);
+    console.log(`   🐦 Twitter/X → ${socialResults.posted?.length || 0} auto-posted, ${socialResults.queued?.length || 0} queued`);
+    console.log(`   🤖 Reddit → ${redditPosts.length} discussion posts ready`);
+    console.log(`   🎙️ RSS Feed → ready for Apple Podcasts/Spotify submission`);
     
-    return { 
-      success: true, 
-      articleCount: articles.length, 
-      stats 
-    };
+    return { success: true, articleCount: articles.length, dealsFound: deals.length, stats };
 
   } catch (error) {
     console.log(`\n❌ Pipeline error: ${error.message}`);
@@ -100,27 +99,15 @@ export async function runFullPipeline() {
   }
 }
 
-// Quick build without full pipeline
 export async function runQuickBuild() {
   const articles = generateAllArticles();
   const outputDir = await buildSite(articles);
-  console.log(`[quick-build] ✓ Built ${articles.length} pages to ${outputDir}`);
+  console.log(`[quick-build] ✓ Built ${articles.length} pages`);
   return { articleCount: articles.length, outputDir };
 }
 
 export function getStats() {
   return { ...stats };
-}
-
-export function getMetadata() {
-  // Use generator metadata but with proper structure
-  const all = generateAllArticles();
-  return all.map(a => ({
-    url: `https://smartsite.vercel.app${a.seoUrl}`,
-    lastmod: new Date().toISOString(),
-    changefreq: 'weekly',
-    priority: a.type === 'category' ? '0.9' : '0.7',
-  }));
 }
 
 globalThis.MONEY_ENGINE_STATS = stats;
