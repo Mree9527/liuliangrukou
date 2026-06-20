@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://your-money-site.github.io/sitemap.xml
+
+Sitemap: https://smartsite.vercel.app/sitemap.xml

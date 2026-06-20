@@ -1,29 +1,22 @@
-import { discoverTrendingContent } from '../scraper/trending.js';
-import { generateAllArticles, generateArticle } from '../content/generator.js';
+import { generateAllArticles, getArticleMetadata } from '../content/generator.js';
 import { buildSite } from '../site/builder.js';
-import { SocialPoster } from '../social/poster.js';
-import * as seo from '../seo/sitemap.js';
-import { CONFIG } from '../config/settings.js';
+import { discoverTrendingContent, saveTrendingData } from '../scraper/trending.js';
 
-let stats = {
-  totalRuns: 0,
-  articlesGenerated: 0,
-  socialPosts: 0,
-  lastRun: null,
-  errors: [],
-};
+let stats = { totalRuns: 0, articlesGenerated: 0, socialPosts: 0, contentDiscoveries: 0, lastRun: null };
 
 export async function runFullPipeline() {
-  console.log('\n🚀 === Starting Full Money Engine Pipeline ===\n');
+  console.log('\n🚀 === Money Engine Full Pipeline ===\n');
   
   try {
-    // Step 1: Discover trending topics (from external data)
-    console.log('[1/5] 🔍 Discovering trending topics...');
-    const trends = await discoverTrendingContent();
-    console.log(`  Found ${trends.reddit.length} Reddit + ${trends.hackernews.length} HN trends`);
+    // Step 1: Discover trending topics from Hacker News
+    console.log('[1/4] 🔍 Scraping HackerNews for trending products...');
+    const content = await discoverTrendingContent();
+    
+    stats.contentDiscoveries += (content.hackernews || []).length;
+    console.log(`  ✓ Found ${(content.hackernews || []).length} trending topics`);
 
-    // Step 2: Generate articles (using curated product database)
-    console.log('[2/5] ✍️ Generating content...');
+    // Step 2: Generate all articles (evergreen content)
+    console.log('[2/4] ✍️ Generating content...');
     const articles = generateAllArticles();
     
     if (articles.length === 0) {
@@ -31,68 +24,37 @@ export async function runFullPipeline() {
     }
     
     stats.articlesGenerated += articles.length;
-    console.log(`  ✓ Generated ${articles.length} articles`);
+    const catCount = articles.filter(a => a.type === 'category').length;
+    const prodCount = articles.filter(a => a.type === 'product').length;
+    console.log(`  ✓ Generated ${articles.length} articles (${catCount} guides + ${prodCount} reviews)`);
 
     // Step 3: Build site
-    console.log('[3/5] 🏗️ Building website...');
+    console.log('[3/4] 🏗️ Building website...');
     const outputDir = await buildSite(articles);
     console.log(`  ✓ Site built at ${outputDir}`);
 
-    // Step 4: Run SEO generation
-    console.log('[4/5] 📈 Generating SEO assets...');
-    await seo.generateSitemap(articles);
-    await seo.generateRSSFeed(articles);
-    const ogImages = await seo.generateOpenGraphImages(articles);
-    console.log('  ✓ Sitemap, RSS feed, and OG images generated');
-
-    // Step 5: Social media posting
-    console.log('[5/5] 📱 Posting to social media...');
-    const poster = new SocialPoster(CONFIG.social);
-    const socialResults = await poster.publishBatch(articles);
-    
-    stats.socialPosts += socialResults.twitter.length + socialResults.medium.length;
+    // Step 4: Save trending data
+    await saveTrendingData(content);
 
     stats.totalRuns++;
     stats.lastRun = new Date().toISOString();
 
     console.log(`\n✅ Pipeline complete! Run #${stats.totalRuns}`);
-    console.log(`   Articles: ${stats.articlesGenerated} | Social posts: ${stats.socialPosts}`);
+    console.log(`   Articles: ${articles.length} | Trending topics: ${(content.hackernews || []).length}`);
     
-    return { success: true, stats };
-
+    return { success: true, articleCount: articles.length, stats };
   } catch (error) {
-    stats.errors.push({ time: new Date().toISOString(), error: error.message });
     console.log(`\n❌ Pipeline error:`, error.message);
     return { success: false, error: error.message };
   }
 }
 
-export async function runIncrementalUpdate() {
-  // Generates just one new article from a random category
-  const topics = Object.keys({
-    'best-laptops-for-students': true,
-    'budget-gaming-keyboards': true,
-    'smart-home-devices-under-50': true,
-  });
-  
-  const randomTopic = topics[Math.floor(Math.random() * topics.length)];
-  console.log(`[incremental] Generating article for: ${randomTopic}`);
-  
-  const article = generateArticle(randomTopic);
-  if (!article) return;
-
-  const { buildSite } = await import('../site/builder.js');
-  await buildSite([article]);
-  
-  stats.articlesGenerated++;
-  stats.lastRun = new Date().toISOString();
-  
-  console.log(`[incremental] ✓ Generated ${randomTopic}`);
-}
-
 export function getStats() {
-  return { ...stats, articles: generateAllArticles().length };
+  return { ...stats };
 }
 
-// Export for use in other modules
+export function getMetadata() {
+  return getArticleMetadata();
+}
+
 globalThis.MONEY_ENGINE_STATS = stats;

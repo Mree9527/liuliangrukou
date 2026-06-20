@@ -1,125 +1,83 @@
 import axios from 'axios';
 
-// Reddit API now requires specific headers for scraping
-export async function scrapeRedditTrending() {
-  const subreddits = [
-    'r/BudgetAesthetics', 'r/SimpleLiving', 'r/goodfinds',
-    'r/AmazonFind', 'r/tipofmytongue', 'r/buyitforlife'
-  ];
-  
-  const trending = [];
-  const userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36';
-  
-  for (const sub of subreddits) {
-    try {
-      const res = await axios.get(
-        `https://www.reddit.com/r/${sub}/hot.json?limit=10`,
-        { 
-          headers: { 
-            'User-Agent': userAgent,
-            'Accept': 'application/json'
-          } 
-        },
-        { timeout: 15000 }
-      );
-      
-      if (res.data?.data?.children) {
-        for (const child of res.data.data.children) {
-          const post = child.data;
-          trending.push({
-            title: post.title,
-            url: `https://reddit.com${post.permalink}`,
-            subreddit: sub,
-            score: post.score,
-            comments: post.num_comments,
-            selfText: post.selftext?.substring(0, 500) || '',
-            extractedProducts: extractProductNames(post.title + ' ' + (post.selftext || '')),
-            timestamp: new Date().toISOString()
-          });
-        }
-      }
-    } catch (e) {
-      console.log(`[trending] Reddit scrape failed for ${sub}:`, e.message);
-    }
-  }
-  
-  return trending;
-}
-
-// Scrape Twitter/X trending topics via Nitter
-export async function scrapeTwitterTrends() {
-  try {
-    const res = await axios.get(
-      'https://nitter.privacydev.net/explore',
-      { headers: { 'User-Agent': 'MoneyEngine/1.0' } },
-      { timeout: 15000 }
-    );
-    
-    if (res.data) {
-      // Extract trending hashtags/topics from Nitter HTML
-      const $ = require('cheerio').load(res.data);
-      const trends = [];
-      $('a[href*="/search?q=%23"]').each((_, el) => {
-        trends.push($(el).text().trim());
-      });
-      return [...new Set(trends)].slice(0, 10);
-    }
-  } catch (e) {
-    // Nitter might be down, that's ok
-  }
-  
-  return [];
-}
-
-// Scrape HackerNews for trending tech products
+// Scrape trending tech topics from Hacker News
 export async function scrapeHackerNews() {
   try {
     const res = await axios.get(
       'https://hacker-news.firebaseio.com/v0/topstories.json',
-      { timeout: 10000 }
+      { timeout: 15000 }
     );
     
-    const ids = (res.data || []).slice(0, 20);
+    if (!res.data) return [];
+    
+    const ids = res.data.slice(0, 30);
     const stories = [];
     
-    for (const id of ids) {
-      try {
-        const storyRes = await axios.get(
-          `https://hacker-news.firebaseio.com/v0/item/${id}.json`,
-          { timeout: 5000 }
+    // Fetch first few stories to find tech products
+    const batchSize = 5;
+    for (let i = 0; i < Math.min(ids.length, batchSize); i += batchSize) {
+      const batch = ids.slice(i, i + batchSize);
+      const promises = batch.map(id => 
+        axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`, { timeout: 5000 })
+          .then(r => r.data).catch(() => null)
+      );
+      
+      const results = await Promise.all(promises);
+      for (const story of results) {
+        if (!story || !story.title) continue;
+        
+        // Look for product mentions in title
+        const productKeywords = [
+          'laptop', 'keyboard', 'mouse', 'phone', 'tablet', 'monitor', 
+          'camera', 'speaker', 'headphones', 'airpods', 'macbook', 'ipad',
+          'ps5', 'switch', 'steam', 'chrome', 'iphone', 'android',
+          'AI', 'software', 'app', 'device', 'gadget', 'tech'
+        ];
+        
+        const hasProduct = productKeywords.some(kw => 
+          story.title.toLowerCase().includes(kw.toLowerCase())
         );
         
-        if (storyRes.data?.title && ['text', 'show'].includes(storyRes.data.type)) continue;
-        
-        stories.push({
-          title: storyRes.data?.title || '',
-          url: storyRes.data?.url || '',
-          score: storyRes.data?.score || 0,
-          comments: storyRes.data?.descendants || 0,
-          timestamp: new Date().toISOString()
-        });
-      } catch (e) {}
+        if (hasProduct && story.score >= 50) {
+          stories.push({
+            title: story.title,
+            url: story.url || `https://news.ycombinator.com/item?id=${story.id}`,
+            score: story.score,
+            comments: story.descendants || 0,
+            timestamp: new Date().toISOString()
+          });
+        }
+      }
     }
     
-    return stories;
+    return stories.sort((a,b) => b.score - a.score).slice(0, 20);
   } catch (e) {
-    console.log('[trending] HackerNews failed:', e.message);
+    console.log(`  [trending] HackerNews failed:`, e.message.split('\n')[0]);
     return [];
   }
 }
 
-// Extract product names from text
+// Scrape Google Trends via RSS feed
+export async function scrapeGoogleTrends() {
+  try {
+    const res = await axios.get(
+      'https://trends.google.com/trends/explore?geo=US&q=laptop,keyboards,mice',
+      { headers: { 'User-Agent': 'MoneyEngine/1.0' }, timeout: 15000 }
+    );
+    return []; // Google Trends requires JS rendering, skip for now
+  } catch (e) {
+    return [];
+  }
+}
+
+// Extract product keywords from text
 export function extractProductNames(text) {
   const keywords = [
     'laptop', 'keyboard', 'mouse', 'headphones', 'earbuds', 'webcam',
-    'monitor', 'hub', 'charger', 'cable', 'stand', 'desk', 'chair',
-    'camera', 'microphone', 'speaker', 'tablet', 'phone', 'watch',
-    'printer', 'scanner', 'router', 'ssd', 'ram', 'processor',
-    'app', 'software', 'tool', 'service', 'platform',
-    'Amazon', 'Apple', 'Samsung', 'Sony', 'Bose', 'Anker',
-    'Logitech', 'Corsair', 'Razer', 'Keychron', 'Ugreen',
-    'iPhone', 'iPad', 'MacBook', 'AirPods', 'Echo', 'Pixel',
-    'Tesla', 'Dyson', 'Nintendo', 'PS5', 'Steam Deck'
+    'monitor', 'hub', 'charger', 'desk', 'chair', 'ssd',
+    'iPad', 'MacBook', 'AirPods', 'Echo', 'Pixel', 'Nintendo',
+    'PS5', 'Steam Deck', 'Logitech', 'Anker', 'Samsung', 'Sony',
+    'MacBook', 'Bose', 'JBL', 'Keychron', 'Redragon', 'Corsair'
   ];
   
   const found = [];
@@ -131,63 +89,39 @@ export function extractProductNames(text) {
   return [...new Set(found)];
 }
 
-// Discover trending affiliate products via Reddit comments
-export async function findAffiliateProducts() {
-  try {
-    const res = await axios.get(
-      'https://www.reddit.com/r/AmazonFind/hot.json?limit=25',
-      { 
-        headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36' },
-        timeout: 15000 
-      }
-    );
-    
-    const products = [];
-    
-    if (res.data?.data?.children) {
-      for (const child of res.data.data.children) {
-        const post = child.data;
-        const links = extractAmazonLinks(post.title + ' ' + (post.selftext || ''));
-        
-        if (links.length > 0) {
-          products.push({
-            name: post.title,
-            amazonUrls: links,
-            score: post.score,
-            subreddit: 'r/AmazonFind',
-            url: `https://reddit.com${post.permalink}`,
-            timestamp: new Date().toISOString()
-          });
-        }
-      }
-    }
-    
-    return products;
-  } catch (e) {
-    console.log('[trending] Affiliate product search failed:', e.message);
-    return [];
-  }
-}
-
-// Extract Amazon URLs from text
+// Extract Amazon links from text
 function extractAmazonLinks(text) {
   const urls = [];
-  const amazonRegex = /https?:\/\/(www\.)?amazon\.[a-z.]+\/.*(?:dp|gp\/product)\/[A-Z0-9]{10}/g;
+  const regex = /https?:\/\/(www\.)?amazon\.[a-z.]+\/.*(?:dp|gp\/product)\/[A-Z0-9]{10}/g;
   let match;
-  while ((match = amazonRegex.exec(text)) !== null) {
+  while ((match = regex.exec(text)) !== null) {
     urls.push(match[0]);
   }
   return [...new Set(urls)];
 }
 
 export async function discoverTrendingContent() {
-  const [reddit, hackernews] = await Promise.all([
-    scrapeRedditTrending(),
+  const [hn] = await Promise.all([
     scrapeHackerNews(),
   ]);
+  return { hackernews: hn };
+}
+
+// Save trending data to output directory
+export async function saveTrendingData(content) {
+  const fs = (await import('fs')).default;
+  const path = (await import('path')).default;
   
-  return { 
-    reddit: reddit.slice(0, 15), 
-    hackernews: hackernews.filter(s => s.score >= 100).slice(0, 10) 
-  };
+  try {
+    const trending = {
+      timestamp: new Date().toISOString(),
+      hackernews: content.hackernews || [],
+    };
+    
+    const outDir = path.resolve('../../output/trending');
+    fs.mkdirSync(outDir, { recursive: true });
+    fs.writeFileSync(path.join(outDir, 'trends.json'), JSON.stringify(trending, null, 2));
+  } catch (e) {
+    // Non-critical
+  }
 }
