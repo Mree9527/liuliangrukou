@@ -97,6 +97,93 @@ export const PRODUCTS = {
       { id:'B0BCQXZV7L', name:'Google Nest Audio', price:'$49.99', rating:4.3, reviews:'50K+', tier:'budget', description:'Best Google smart speaker at budget-friendly pricing.', pros:['Excellent voice recognition accuracy','Clean minimalist aesthetic design','Rich full-range sound'], cons:['No headphone output jack','Google ecosystem dependency'] },
     ]
   },
+
+  fitness: {
+    category: 'Fitness Equipment',
+    keywords: ['best fitness equipment', 'home gym deals'],
+    items: [
+      { id:'B0BMXKJQ1G', name:'Bowflex SelectTech 552 Dumbbells', price:'$349', rating:4.7, reviews:'8K+', tier:'premium', description:'Space-saving adjustable dumbbells.', pros:['Saves space','Adjusts in 2.5lb increments'], cons:['Heavy at 25 lbs'] },
+      { id:'B07PFFWK6Z', name:'Theragun Mini Massage Gun', price:'$199', rating:4.5, reviews:'5K+', tier:'mid', description:'Compact percussion massager.', pros:['Portable','Quiet'], cons:['Small head'] },
+    ]
+  },
+
+  coffee: {
+    category: 'Coffee Makers',
+    keywords: ['best espresso machine', 'coffee maker deals'],
+    items: [
+      { id:'B0BSHF7COF1', name:'Breville Barista Express Espresso Machine', price:'$699.95', rating:4.5, reviews:'8K+', tier:'premium', description:'Semi-automatic espresso with built-in grinder.', pros:['Built-in burr grinder','Steam wand'], cons:['Learning curve'] },
+    ]
+  },
+
+  travel: {
+    category: 'Travel Gear',
+    keywords: ['best travel backpack', 'carryon luggage deals'],
+    items: [
+      { id:'B0BSHF7TRV1', name:'Peak Design Travel Backpack 30L', price:'$279.95', rating:4.6, reviews:'2K+', tier:'premium', description:'Expandable carry-on backpack.', pros:['Expandable','Compartments'], cons:['Expensive'] },
+    ]
+  },
+
+  kitchen: {
+    category: 'Kitchen Gadgets',
+    keywords: ['best kitchen gadgets', 'smart kitchen deals'],
+    items: [
+      { id:'B07L3W825Q', name:'Instant Pot Duo 7-in-1', price:'$89.99', rating:4.6, reviews:'80K+', tier:'budget', description:'7-in-1 multi-cooker.', pros:['Replaces 7 appliances','Time-saving'], cons:['Learning curve'] },
+    ]
+  },
+
+  security: {
+    category: 'Security Cameras',
+    keywords: ['best smart security camera', 'video doorbell review'],
+    items: [
+      { id:'B0BSHF7SEC1', name:'Ring Video Doorbell Pro 2', price:'$199.99', rating:4.3, reviews:'6K+', tier:'mid', description:'HD+ doorbell with 3D motion.', pros:['1536p clarity','Alexa compatible'], cons:['Requires wiring'] },
+      { id:'B0BSHF7SEC2', name:'Wyze Cam v3 4-Pack', price:'$119.96', rating:4.5, reviews:'25K+', tier:'budget', description:'Ultra-affordable camera bundle.', pros:['Great value','Free cloud storage'], cons:['App glitchy'] },
+    ]
+  },
+
+  fitness_tracker: {
+    category: 'Fitness Trackers',
+    keywords: ['best fitness tracker', 'smartwatch deals'],
+    items: [
+      { id:'B0BSHF7FIT1', name:'Fitbit Charge 6', price:'$159.99', rating:4.4, reviews:'4K+', tier:'mid', description:'Advanced tracker with built-in GPS.', pros:['Built-in GPS','Google Wallet'], cons:['Requires Premium'] },
+    ]
+  },
+
+  office: {
+    category: 'Office Supplies',
+    keywords: ['best home office accessories', 'ergonomic gear'],
+    items: [
+      { id:'B0BSHF7OFF1', name:'Herman Miller Aeron Chair', price:'$1,395', rating:4.8, reviews:'6K+', tier:'premium', description:'Industry-standard ergonomic chair.', pros:['12-year warranty','Exceptional support'], cons:['Expensive'] },
+      { id:'B0BSHF7OFF2', name:'AmazonBasics Laptop Stand', price:'$24.99', rating:4.3, reviews:'20K+', tier:'budget', description:'Affordable aluminum stand.', pros:['Improves posture','Very affordable'], cons:['Not premium'] },
+    ]
+  },
+
+  speakers: {
+    category: 'Speakers',
+    keywords: ['best bluetooth speaker', 'portable speaker deals'],
+    items: [
+      { id:'B0BSHF7AUD1', name:'JBL Charge 5 Speaker', price:'$149.99', rating:4.6, reviews:'30K+', tier:'mid', description:'Portable speaker with powerbank.', pros:['20hr battery','IP67 waterproof'], cons:['Bass-heavy'] },
+      { id:'B0BSHF7AUD2', name:'Anker Soundcore Motion+', price:'$99.99', rating:4.4, reviews:'20K+', tier:'budget', description:'Hi-res bluetooth speaker.', pros:['Great sound','Customizable EQ'], cons:['Bulky'] },
+    ]
+  },
+
+  cameras: {
+    category: 'Cameras',
+    keywords: ['best camera for beginners', 'mirrorless camera deals'],
+    items: [
+      { id:'B0B1LVT8JQ', name:'Sony ZV-E10 Mirrorless Camera', price:'$698', rating:4.5, reviews:'3K+', tier:'mid', description:'Affordable mirrorless for creators.', pros:['Great AF','Flip-out screen'], cons:['Limited lens ecosystem'] },
+    ]
+  },
+
+  gardening: {
+    category: 'Garden Tools',
+    keywords: ['indoor plants supplies', 'smart garden deals'],
+    items: [
+      { id:'B0BSHF7GAR1', name:'AeroGarden Harvest Elite', price:'$149.99', rating:4.2, reviews:'5K+', tier:'mid', description:'Indoor hydroponic herb garden.', pros:['Grow year-round','Self-watering'], cons:['Small plants only'] },
+      { id:'B0BSHF7GAR2', name:'Fiskars Step Spade Shovel', price:'$34.99', rating:4.6, reviews:'12K+', tier:'budget', description:'No-bend step garden shovel.', pros:['Saves back strain','Step-on design'], cons:['Plastic in cold'] },
+    ]
+  },
+
+
 };
 
 export function getAmazonLink(asin, tag) {
