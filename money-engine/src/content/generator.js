@@ -117,7 +117,7 @@ h1{font-size:clamp(1.6em,4vw,2.2em);font-weight:700;line-height:1.3;color:#16213
 <nav class="nav-bar">
 <a href="/">🏠 Home</a> | 
 <a href="/reviews/">📋 All Reviews</a> |
-<a href="/categories/${category}s/">📁 ${product.category}</a>
+<a href="/categories/${category}/">📁 ${product.category}</a>
 </nav>
 
 <div class="container">
@@ -264,7 +264,7 @@ export function generateCategoryArticle(catKey) {
   
   const date = new Date();
   const pubDate = date.toISOString();
-  const plural = cat.category + 's';
+  const plural = cat.category;
   
   let productListHtml = '';
   cat.items.forEach((product, index) => {
