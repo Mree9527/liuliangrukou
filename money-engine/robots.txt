@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://smartsite.vercel.app/sitemap.xml
