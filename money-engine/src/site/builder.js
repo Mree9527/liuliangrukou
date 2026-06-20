@@ -216,3 +216,19 @@ Sitemap: ${CONFIG.siteUrl}/sitemap.xml`;
   await fs.writeFile(path.join(OUTPUT_DIR, 'robots.txt'), robots);
   console.log('  ✓ robots.txt created');
 }
+
+// Patch buildSite to handle compare URLs
+const originalBuildSite = buildSite;
+buildSite = async function(articles) {
+  await fs.mkdir(path.join(OUTPUT_DIR, 'compare'), { recursive: true });
+  
+  for (const article of articles) {
+    if (article.seoUrl && article.seoUrl.startsWith('/compare/')) {
+      const filename = article.seoUrl.replace('/compare/', '');
+      await fs.writeFile(path.join(OUTPUT_DIR, 'compare', filename), article.html);
+      console.log(`  ✓ Comparison: ${filename}`);
+    }
+  }
+  
+  return originalBuildSite(articles);
+};
