@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+.money-engine/node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+*.local
