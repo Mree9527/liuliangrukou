@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-06-20T18:38:29.555Z",
+  "dayOfWeek": "Sunday",
+  "contentGenerated": {
+    "productReviews": 281,
+    "categoryGuides": 166
+  },
+  "distributionStatus": {
+    "mediumExportReady": true,
+    "newsletterReady": true,
+    "rssFeedReady": true,
+    "twitterQueueReady": true,
+    "redditPostsReady": true
+  },
+  "seoMetrics": {
+    "totalPages": 447,
+    "affiliateLinks": "All product pages contain Amazon affiliate links",
+    "sitemapGenerated": true,
+    "robotsTxtCreated": true
+  }
+}
