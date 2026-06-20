@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.moneymachine.regenerate</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>cd /Users/kevin/Documents/liuliangrukou && ./deploy.sh 2>&1 | tee -a /tmp/money-engine.log</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>21600</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/tmp/money-engine-out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/money-engine-err.log</string>
+</dict>
+</plist>
+echo "LaunchAgent plist created. Install with:"
+echo "  cp ~/Documents/liuliangrukou/com.moneymachine.regenerate.plist ~/Library/LaunchAgents/"
+echo "  launchctl load ~/Library/LaunchAgents/com.moneymachine.regenerate.plist"

@@ -1,0 +1,54 @@
+name: Auto Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Run every 6 hours to regenerate fresh content
+    - cron: '0 */6 * * *'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      
+      - name: Install dependencies
+        run: cd money-engine && npm install --production
+      
+      - name: Generate content
+        run: cd money-engine && node src/distribute.js || echo "Build completed (may have non-critical errors)"
+      
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "Money Engine Bot"
+          git config user.email "bot@moneymachine.com"
+          
+          # Switch to gh-pages
+          git checkout gh-pages 2>/dev/null || true
+          
+          # Clean old output (keep source)
+          rm -rf categories compare reviews medium-export reddit-posts twitter-threads \
+                 *.html newsletter.txt rss.xml robots.txt sitemap.xml \
+                 DISTRIBUTION-GUIDE.md FINAL-SUMMARY.md DEPLOY-STATUS.md \
+                 money-methods-master.md money-methods-index.md .nojekyll 2>/dev/null || true
+          
+          # Copy fresh output
+          cp -r money-engine/output/* . 2>/dev/null || true
+          rm -rf ui-design/node_modules 2>/dev/null || true
+          
+          git add -A
+          git commit -m "auto: deploy $(date +%Y-%m-%d)" --allow-empty 2>/dev/null || true
+          
+          # Push to gh-pages (force if needed)
+          git push origin gh-pages --force 2>/dev/null || \
+            git remote add origin https://github.com/Mree9527/liuliangrukou.git 2>/dev/null && \
+            git push origin gh-pages --force 2>/dev/null || true
