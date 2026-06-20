@@ -1,6 +1,8 @@
 #!/usr/bin/env node
-import { runFullPipeline } from './scheduler/jobs.js';
+import { runFullPipeline, getStats, runQuickBuild } from './scheduler/jobs.js';
 import { startAPI } from './api/server.js';
+import fs from 'fs/promises';
+import path from 'path';
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -12,36 +14,35 @@ console.log('╚═════════════════════�
 
 async function main() {
   if (command === 'build') {
-    const { generateAllArticles } = await import('./content/generator.js');
-    const { buildSite } = await import('./site/builder.js');
-    const articles = generateAllArticles();
-    const dir = await buildSite(articles);
-    console.log(`\n✅ Site built at: ${dir}`);
+    const result = await runQuickBuild();
+    console.log(`\n✅ Site built: ${result.outputDir}`);
     process.exit(0);
   } else if (command === 'stats') {
-    const { getStats } = await import('./scheduler/jobs.js');
     const stats = getStats();
-    console.log('\n📊 Stats:', JSON.stringify(stats, null, 2));
+    console.log('\n📊 Money Engine Stats:\n', JSON.stringify(stats, null, 2));
     process.exit(0);
   }
 
-  // Default: full pipeline + serve
+  // Default: Run full pipeline + start API + schedule future runs
   try {
     const result = await runFullPipeline();
     
     if (result.success) {
-      console.log('\n✅ Money Engine is running!\n');
-      console.log('Generated content:');
-      console.log('  🏠 output/index.html              - Homepage');
-      console.log('  📁 output/categories/*.html       - Category guides');
-      console.log('  🔍 output/reviews/*.html          - Product reviews');
-      console.log('  🗺️ output/sitemap.xml             - SEO sitemap');
-      console.log('  📰 output/robots.txt              - Search engine robots');
+      console.log('\n🚀 Starting automated services...\n');
       
-      // Start API server for dynamic content generation
+      // Start API server
       startAPI();
+      
+      // Schedule content regeneration every hour
+      const INTERVAL_MINUTES = 60;
+      console.log(`⏰ Scheduled: Next full pipeline in ${INTERVAL_MINUTES} minutes\n`);
+      
+      setInterval(async () => {
+        await runFullPipeline();
+      }, INTERVAL_MINUTES * 60 * 1000);
     } else {
       console.log('\n❌ Pipeline failed:', result.error);
+      process.exit(1);
     }
   } catch (err) {
     console.error('Fatal error:', err.message);
