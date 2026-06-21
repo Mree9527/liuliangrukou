@@ -1,0 +1,32 @@
+[
+  {
+    "title": "MacBook Air M2 Review - Best Ultrabook in 2026",
+    "description": "Apple M2 chip, Liquid Retina display, 18hr battery life. Full review + current price $999.",
+    "keywords": [
+      "macbook air m2",
+      "apple laptop 2026",
+      "best ultrabook"
+    ],
+    "image_type": "product_image"
+  },
+  {
+    "title": "Redragon K552 Kumara - Budget Mechanical Keyboard",
+    "description": "RGB mechanical keyboard at $29.99 with brass plate and blue switches.",
+    "keywords": [
+      "budget mechanical keyboard",
+      "redragon k552",
+      "gaming keyboard under 30"
+    ],
+    "image_type": "keyboard_image"
+  },
+  {
+    "title": "Sony WF-1000XM5 - Best ANC Earbuds",
+    "description": "Industry-leading noise cancellation with LDAC hi-res audio. $248 review.",
+    "keywords": [
+      "sony wf-1000xm5",
+      "best earbuds 2026",
+      "noise cancelling earbuds"
+    ],
+    "image_type": "earbuds_image"
+  }
+]

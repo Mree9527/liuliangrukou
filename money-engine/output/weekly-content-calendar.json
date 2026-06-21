@@ -1,0 +1,55 @@
+{
+  "week": "2026-06-21",
+  "posts": [
+    {
+      "day": "Monday",
+      "type": "blog_post",
+      "title": "Best Wireless Earbuds Under $50 in 2026 (Tested)",
+      "keywords": [
+        "best wireless earbuds under 50",
+        "budget earbuds 2026"
+      ],
+      "url": "/money-engine/output/medium-export/best-wireless-earbuds-under-50.html"
+    },
+    {
+      "day": "Tuesday",
+      "type": "comparison",
+      "title": "MacBook Air M2 vs M1: Which Should You Buy?",
+      "keywords": [
+        "macbook air m2 vs m1",
+        "which macbook to buy"
+      ],
+      "url": "/money-engine/output/medium-export/macbook-air-m2-vs-m1.html"
+    },
+    {
+      "day": "Wednesday",
+      "type": "deal_alert",
+      "title": "Redragon K552 Kumara - Best Budget Mechanical Keyboard",
+      "keywords": [
+        "best mechanical keyboard under 30",
+        "budget gaming keyboard"
+      ],
+      "url": "/money-engine/output/deals/electronics/deal-alert-B01E8KO2B0.html"
+    },
+    {
+      "day": "Thursday",
+      "type": "twitter_thread",
+      "title": "Sony WF-1000XM5 - Best ANC Earbuds (Thread)",
+      "keywords": [
+        "sony wf-1000xm5 review",
+        "best noise cancelling earbuds"
+      ],
+      "url": "/money-engine/output/reviews/B0D1XD1ZV3-review.html"
+    },
+    {
+      "day": "Friday",
+      "type": "newsletter",
+      "title": "Weekly Tech Deals Newsletter",
+      "keywords": [
+        "tech deals this week",
+        "amazon discounts"
+      ],
+      "url": "/money-engine/output/newsletter.html"
+    }
+  ]
+}
