@@ -99,7 +99,7 @@ export async function generateRedditPosts(articles) {
   );
   
   // Sort by rating (higher first)
-  const sorted = targetArticles.slice(0, 20).sort((a, b) => {
+  const sorted = targetArticles.sort((a, b) => {
     const ra = parseFloat(extractRating(a.html)) || 0;
     const rb = parseFloat(extractRating(b.html)) || 0;
     return rb - ra;

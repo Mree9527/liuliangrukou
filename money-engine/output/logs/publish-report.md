@@ -1,1 +1,0 @@
-No publishing activity logged yet.

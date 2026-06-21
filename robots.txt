@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://mree9527.github.io/liuliangrukou/sitemap.xml
