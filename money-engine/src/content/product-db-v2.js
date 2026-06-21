@@ -185,56 +185,57 @@ export const PRODUCTS = {
 
 
 
-  // HOME & OFFICE (3 products)
-  home_office: {
-    category: 'Home Office',
-    keywords: ['standing desk review', 'ergonomic chair 2025', 'desk accessories'],
+  // HIGH-TICKET: TVs & Soundbars (high commission per sale)
+  tvs: {
+    category: 'TVs',
+    keywords: ['best tv 2026', 'oled tv review', '4k smart tv'],
     items: [
-      { id:'B0BW1G7J6M', name:'Uplift V2 Standing Desk', price:'$599', rating:4.7, reviews:'8K+', tier:'premium', description:'Solid 350lb capacity with height memory presets.', pros:['Solid at 350lb capacity','Excellent height memory presets','Smooth electric sit-stand'], cons:['Takes 45 min to assemble','Premium price for standing desk'] },
-      { id:'B07HMQP78X', name:'Autonomous ErgoChair Pro', price:'$399', rating:4.5, reviews:'3K+', tier:'mid', description:'Excellent ergonomic chair with breathable mesh back.', pros:['Excellent lumbar support','Breathable mesh back','Adjustable headrest'], cons:['Armrests adjustable limits','Seat cushion firmness'] },
-      { id:'B08BCTG4T5', name:'Fully Jarvis Bamboo Standing Desk', price:'$499', rating:4.6, reviews:'12K+', tier:'mid', description:'Eco-friendly bamboo surface standing desk.', pros:['Eco-friendly bamboo surface','Quiet motor operation','Good cable management'], cons:['Bamboo shows scratches over time','Wobbly at max height'] },
+      { id:'B0CV5RQXJ3', name:'Samsung 65" QLED 4K Smart TV (2024)', price:'$797.99', rating:4.6, reviews:'15K+', tier:'premium', description:'Stunning 65-inch QLED with Neural Quantum Processor.', pros:['Excellent color accuracy','Built-in Alexa and Google Assistant','Bright HDR implementation'], cons:['Limited gaming features at this price','Wider viewing angle would be better'] },
+      { id:'B0CV1KCGH7', name:'LG 55" OLED evo C4 Smart TV', price:'$1,296.99', rating:4.8, reviews:'8K+', tier:'premium', description:'Best-in-class OLED with self-lit pixels and Dolby Vision.', pros:['Perfect blacks','Infinite contrast ratio','Gaming-ready with HDMI 2.1'], cons:['Premium price for OLED','Risk of burn-in over years'] },
+      { id:'B0CVRZ8T6D', name:'Sony 75" Bravia XR A95L OLED', price:'$2,798', rating:4.7, reviews:'3K+', tier:'ultra_premium', description:'Flagship QD-OLED with Cognitive Processor XR.', pros:['Best picture quality available','Cognitive Processor XR is revolutionary','Premium build quality'], cons:['Very expensive','Overkill for casual viewers']}
     ]
   },
-  // HOME & GARDEN (3 products)
-  home_garden: {
-    category: 'Home & Garden',
-    keywords: ['best air purifier 2025', 'robot vacuum review', 'smart lights setup'],
+  // Audio: Soundbars & Home Theater
+  audio: {
+    category: 'Audio',
+    keywords: ['best soundbar 2026', 'home theater setup'],
     items: [
-      { id:'B0936JG85D', name:'Levoit Core 300 Air Purifier', price:'$99.99', rating:4.7, reviews:'120K+', tier:'budget', description:'HEPA filtration air purifier for allergies.', pros:['HEPA filtration for allergens','Whisper quiet at 24dB','Compact design'], cons:['No smart features','Replacement filters $30'] },
-      { id:'B09NRGF38C', name:'Roborock S7 Robot Vacuum', price:'$569', rating:4.6, reviews:'5K+', tier:'premium', description:'Premium robot vacuum with mopping function.', pros:['Excellent mopping function','Great on hard floors and carpet','App is well-designed'], cons:['Expensive for robot vacuum','Base station not included'] },
-      { id:'B07XJ8D6C4', name:'Philips Hue White and Color Ambiance', price:'$199.99', rating:4.5, reviews:'25K+', tier:'premium', description:'Smart LED system with 16M colors.', pros:['16M colors + white tones','Works with all smart home platforms','Easy setup'], cons:['Requires Hue Bridge','Premium price per bulb']}
+      { id:'B09W5D78XK', name:'Samsung HW-Q990C Soundbar (11.1.4ch)', price:'$1,197.99', rating:4.6, reviews:'3K+', tier:'premium', description:'Full 11.1.4 channel surround sound with wireless subwoofer.', pros:['True Dolby Atmos without extra speakers','Wireless rear speakers included','Excellent bass'], cons:['Requires HDMI eARC for full features','Installation can be complex'] },
+      { id:'B0B7GT3J4T', name:'Sonos Arc Ultra Soundbar', price:'$899', rating:4.7, reviews:'2K+', tier:'premium', description:'Premium Dolby Atmos soundbar.', pros:['Incredible speech clarity','Seamless Sonos ecosystem integration','Sleek minimalist design'], cons:['Very expensive single unit','Room calibration takes time'] }
     ]
   },
-  // FITNESS & HEALTH (2 products)
-  fitness: {
-    category: 'Fitness',
-    keywords: ['best resistance bands', 'yoga mat review', 'foam roller guide'],
+  // Office Furniture
+  office_furniture: {
+    category: 'Office Furniture',
+    keywords: ['best ergonomic chair', 'standing desk mat'],
     items: [
-      { id:'B07XJZB8G5', name:'Whatafit Resistance Bands Set', price:'$12.99', rating:4.4, reviews:'100K+', tier:'budget', description:'11-piece resistance band set for home workouts.', pros:['Unbeatable price for 11-piece set','Multiple resistance levels','Portable travel bag'], cons:['Latex bands can snap eventually','Handles could be thicker'] },
-      { id:'B07PFFMU9D', name:'Manduka PRO Yoga Mat', price:'$120', rating:4.8, reviews:'30K+', tier:'premium', description:'Lifetime guarantee yoga mat with superior grip.', pros:['Lifetime guarantee','Superior grip and cushioning','Closed-cell surface resists bacteria'], cons:['Heavy at 7.5 lbs','Needs break-in period']}
+      { id:'B01N6H8FQJ', name:'Steelcase Leap V2 Ergonomic Chair', price:'$415', rating:4.7, reviews:'25K+', tier:'premium', description:'The gold standard of office chairs after 30+ years of development.', pros:['Unmatched ergonomic adjustments','LiveBack technology follows your spine','Built to last 12+ years'], cons:['Steep learning curve for settings','Expensive for a chair'] },
+      { id:'B0B3R7G8JW', name:'Flexispot Standing Desk Mat', price:'$49.99', rating:4.5, reviews:'8K+', tier:'budget', description:'Anti-fatigue mat that makes standing desks comfortable.', pros:['Saves your feet','Easy to clean surface','Non-slip bottom'], cons:['Size varies by desk width','Could be thicker']}
     ]
   },
-  // KITCHEN (2 products)
-  kitchen: {
-    category: 'Kitchen',
-    keywords: ['best air fryer 2025', 'instant pot review', 'blender guide'],
-    items: [
-      { id:'B07SCGJJSW', name:'COSORI Pro LE Air Fryer 5QT', price:'$89.99', rating:4.6, reviews:'150K+', tier:'budget', description:'5-quart air fryer with 9 one-touch programs.', pros:['Cooks for family of 4-5','9 one-touch programs','Dishwasher safe basket'], cons:['Only 5QT capacity (small families)','No smart app control'] },
-      { id:'B069Y1D6C8', name:'Instant Pot Duo 7-in-1', price:'$79.99', rating:4.7, reviews:'500K+', tier:'budget', description:'Multi-function pressure cooker that replaces 7 appliances.', pros:['Replaces 7 kitchen appliances','Huge community + recipes','Saves cooking time dramatically'], cons:['Learning curve for beginners','Takes counter space']}
-    ]
-  },
-  // PET SUPPLIES (2 products)
-  pet_supplies: {
-    category: 'Pet Supplies',
-    keywords: ['cat water fountain', 'self heating dog bed', 'automatic pet feeder'],
-    items: [
-      { id:'B07KWVH38S', name:'PETLIBRO Cat Water Fountain', price:'$29.99', rating:4.4, reviews:'50K+', tier:'budget', description:'Cat water fountain that encourages hydration.', pros:['Encourages cats to drink more water','Quiet pump under $30','Easy to clean'], cons:['Filter needs monthly replacement','Plastic bowl can stain'] },
-      { id:'B07VJBF4H8', name:'K&H Pet Products Thigh High Self Heating Mat', price:'$24.99', rating:4.5, reviews:'35K+', tier:'budget', description:'Self-heating pet mat no electricity needed.', pros:['Self-heating no electricity needed','Great for cats and small dogs','Washable cover'], cons:['Only works indoors','Limited to small/medium pets']}
-    ]
-  }
-
 };
-export function getAmazonLink(asin, tag = 'smarthome-20') {
+
+export function getAmazonLink(asin, tag) {
   return `https://www.amazon.com/dp/${asin}?tag=${tag}&linkCode=ogi&th=1`;
 }
 
+export function getAllProducts() {
+  const all = [];
+  for (const cat of Object.values(PRODUCTS)) {
+    for (const item of cat.items) {
+      all.push({ ...item, category: cat.category });
+    }
+  }
+  return all;
+}
+
+export function getTrendingProducts(count = 5) {
+  return getAllProducts()
+    .filter(p => p.rating >= 4.0)
+    .sort((a, b) => {
+      const aReviews = parseFloat(a.reviews?.replace('K','') * 1000 || 0);
+      const bReviews = parseFloat(b.reviews?.replace('K','') * 1000 || 0);
+      return (bReviews - aReviews) || (b.rating - a.rating);
+    })
+    .slice(0, count);
+}
