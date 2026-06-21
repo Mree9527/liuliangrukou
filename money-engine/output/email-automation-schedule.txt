@@ -1,0 +1,21 @@
+DAILY EMAIL AUTOMATION SCHEDULE
+
+Platform: Mailchimp (Free Tier)
+Limit: 500 subscribers / 500 emails/day
+
+TIMING:
+Mon-Fri: 9:00 AM EST - Daily Deals Newsletter
+Sat-Sun: 8:00 AM EST - Weekend Deals Roundup
+
+TO SET UP:
+1. Go to mailchimp.com and create free account
+2. Create audience for subscribers  
+3. Upload email templates
+4. Set up daily automation for 9am EST
+5. Add subscribe button to your site
+
+AUTOMATION BENEFITS:
+- Passive traffic generation 24/7
+- Repeat customers from email list
+- Higher conversion (emails convert 3x better than social posts)
+MDEOF
