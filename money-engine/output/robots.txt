@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://smartsite.vercel.app/sitemap.xml
+Sitemap: https://mree9527.github.io/liuliangrukou/sitemap.xml

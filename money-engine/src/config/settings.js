@@ -1,5 +1,5 @@
 export const CONFIG = {
-  siteUrl: 'https://smartsite.vercel.app',  // Update after deployment
+  siteUrl: 'https://mree9527.github.io/liuliangrukou',  // Update after deployment
   affiliateTag: 'smarthome-20',             // Replace with your Amazon Associates tag
   
   schedule: {
