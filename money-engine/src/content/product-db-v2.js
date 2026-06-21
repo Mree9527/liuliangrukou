@@ -213,8 +213,27 @@ export const PRODUCTS = {
       { id:'B0B3R7G8JW', name:'Flexispot Standing Desk Mat', price:'$49.99', rating:4.5, reviews:'8K+', tier:'budget', description:'Anti-fatigue mat that makes standing desks comfortable.', pros:['Saves your feet','Easy to clean surface','Non-slip bottom'], cons:['Size varies by desk width','Could be thicker']}
     ]
   },
-};
 
+  // Smart Home Gadgets (high volume, good commissions)
+  smart_home: {
+    category: 'Smart Home',
+    keywords: ['best smart home devices', 'smart speaker review', 'home automation'],
+    items: [
+      { id:'B09B8RNHTY', name:'Echo Dot (5th Gen) Smart Speaker', price:'$49.99', rating:4.7, reviews:'200K+', tier:'budget', description:'Amazon Echo with improved sound and smart home hub built in.', pros:['Built-in Zigbee hub','Excellent Alexa integration','Compact design'], cons:['Audio quality limited for music lovers','Requires Wi-Fi for full features'] },
+      { id:'B08N5WRWNW', name:'Ring Video Doorbell Pro 2', price:'$179.99', rating:4.6, reviews:'45K+', tier:'mid', description:'Premium doorbell camera with 3D motion detection and HDR video.', pros:['3D Motion Detection','1536p HD video quality','Works with Alexa'], cons:['Requires existing doorbell wiring','Subscription for advanced features'] },
+      { id:'B07P89ZG3N', name:'Wyze Cam V3 Security Camera (4-Pack)', price:'$79.99', rating:4.5, reviews:'100K+', tier:'budget', description:'Affordable indoor/outdoor security camera with night vision.', pros:['Incredible $20/camera price','Color night vision','Free cloud recording'], cons:['App can be slow sometimes','Local storage requires SD card']}
+    ]
+  },
+  // Baby & Kids (evergreen high-volume niche)
+  baby_kids: {
+    category: 'Baby & Kids',
+    keywords: ['baby monitor review', 'kids tablet 2026'],
+    items: [
+      { id:'B07XJ8D6C4', name:'Apple iPad (10th Gen) Kids Edition Bundle', price:'$399', rating:4.8, reviews:'15K+', tier:'premium', description:'Perfect first tablet for kids with parental controls.', pros:['Excellent build quality','Great parental control app','Long battery life'], cons:['Premium price for a kids tablet','May outgrow basic apps quickly'] },
+      { id:'B07KWVH38S', name:'Nanit Pro Smart Baby Monitor', price:'$349', rating:4.5, reviews:'8K+', tier:'premium', description:'AI-powered baby monitor with sleep tracking and breathing wear.', pros:['Sleep analytics incredible','Two-way audio crystal clear','Breathing wear innovative'], cons:['Expensive for a baby monitor','Subscription needed for full features']}
+    ]
+  },
+};
 export function getAmazonLink(asin, tag) {
   return `https://www.amazon.com/dp/${asin}?tag=${tag}&linkCode=ogi&th=1`;
 }
