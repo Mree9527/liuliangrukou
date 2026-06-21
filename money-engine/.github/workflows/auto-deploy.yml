@@ -1,0 +1,46 @@
+name: Auto Deploy Content
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Run every 6 hours to generate fresh content
+    - cron: '0 */6 * * *'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      
+      - name: Install dependencies
+        run: npm install --production=false
+      
+      - name: Generate fresh content
+        run: |
+          cd money-engine
+          node src/distribute.js
+          python3 src/generate_content.py
+      
+      - name: Fix URLs for GitHub Pages
+        run: |
+          cd money-engine/output
+          find . -type f \( -name "*.html" -o -name "*.json" \) \
+            -exec sed -i 's|https://smartsite.vercel.app|https://mree9527.github.io/liuliangrukou|g' {} +
+      
+      - name: Deploy to gh-pages
+        run: |
+          cd /Users/kevin/Documents/liuliangrukou/money-engine/output  # adjust path in repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Auto-deploy: $(date +%Y-%m-%d)" || echo "No changes"
+          git push origin gh-pages --force 2>/dev/null || true
