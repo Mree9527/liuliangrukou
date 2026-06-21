@@ -1,0 +1,198 @@
+{
+  "B0BSHF7WHW": {
+    "name": "MacBook Air M2 13\"",
+    "category": "Laptops"
+  },
+  "B09JQMJHXY": {
+    "name": "MacBook Air M1 Refurbished",
+    "category": "Laptops"
+  },
+  "B0BS4C7M5V": {
+    "name": "ASUS VivoBook 15 OLED",
+    "category": "Laptops"
+  },
+  "B0CCP2637D": {
+    "name": "Acer Aspire 3 A315",
+    "category": "Laptops"
+  },
+  "B0CM5JV2G8": {
+    "name": "Lenovo IdeaPad Slim 5",
+    "category": "Laptops"
+  },
+  "B01E8KO2B0": {
+    "name": "Redragon K552 Kumara",
+    "category": "Keyboards"
+  },
+  "B09C1DG61K": {
+    "name": "Keychron K2 Wireless",
+    "category": "Keyboards"
+  },
+  "B0BHJC6X1R": {
+    "name": "Royal Kludge RK84",
+    "category": "Keyboards"
+  },
+  "B0BWQF4M1P": {
+    "name": "Keychron Q1 Pro",
+    "category": "Keyboards"
+  },
+  "B096VPCZK1": {
+    "name": "Logitech MX Keys S",
+    "category": "Keyboards"
+  },
+  "B0D1XD1ZV3": {
+    "name": "Sony WF-1000XM5",
+    "category": "Earbuds"
+  },
+  "B0CHXHTV6P": {
+    "name": "Samsung Galaxy Buds FE",
+    "category": "Earbuds"
+  },
+  "B0D7FJ86YQ": {
+    "name": "Soundcore P20i",
+    "category": "Earbuds"
+  },
+  "B0CMDRCZ5H": {
+    "name": "Soundcore Space A40",
+    "category": "Earbuds"
+  },
+  "B0D48HCS6T": {
+    "name": "JBL Tune Buds NC",
+    "category": "Earbuds"
+  },
+  "B0BWQZ8W4S": {
+    "name": "Samsung Odyssey G5 34\"",
+    "category": "Monitors"
+  },
+  "B0C4YSJ4Y9": {
+    "name": "LG 27GP850-B Nano IPS",
+    "category": "Monitors"
+  },
+  "B0C7Z4Q3P8": {
+    "name": "ASUS TUF VG28UQL1A 4K",
+    "category": "Monitors"
+  },
+  "B09DTK3628": {
+    "name": "Logitech G502 X Plus",
+    "category": "Mice"
+  },
+  "B0B6GXCQXY": {
+    "name": "Logitech MX Master 3S",
+    "category": "Mice"
+  },
+  "B09THVN38M": {
+    "name": "Razer Viper V2 Pro",
+    "category": "Mice"
+  },
+  "B0C2Z3F9VH": {
+    "name": "Redragon M913 Impact",
+    "category": "Mice"
+  },
+  "B0BTXDWZ7K": {
+    "name": "Sony WH-1000XM5",
+    "category": "Headphones"
+  },
+  "B0BTXDPK6T": {
+    "name": "Bose QuietComfort Ultra",
+    "category": "Headphones"
+  },
+  "B0CD2FSRDD": {
+    "name": "Soundcore Q30",
+    "category": "Headphones"
+  },
+  "B0BWQY47V2": {
+    "name": "Samsung 990 Pro 1TB",
+    "category": "SSDs"
+  },
+  "B0CWJ1H93W": {
+    "name": "WD Black SN8100 2TB PCIe 5",
+    "category": "SSDs"
+  },
+  "B0BWQR3FJN": {
+    "name": "Crucial P3 Plus 1TB",
+    "category": "SSDs"
+  },
+  "B09KXSDW1D": {
+    "name": "Logitech Brio 500",
+    "category": "Webcams"
+  },
+  "B0BS5G8R2D": {
+    "name": "Anker PowerConf C320",
+    "category": "Webcams"
+  },
+  "B0BNQZ1R8T": {
+    "name": "Elgato Facecam Mini",
+    "category": "Webcams"
+  },
+  "B09B8RXYK7": {
+    "name": "Echo Dot (5th Gen)",
+    "category": "Smart Speakers"
+  },
+  "B0BCQZX2V8": {
+    "name": "Sonos Era 100",
+    "category": "Smart Speakers"
+  },
+  "B0BCQXZV7L": {
+    "name": "Google Nest Audio",
+    "category": "Smart Speakers"
+  },
+  "B0BMXKJQ1G": {
+    "name": "Bowflex SelectTech 552 Dumbbells",
+    "category": "Fitness Equipment"
+  },
+  "B07PFFWK6Z": {
+    "name": "Theragun Mini Massage Gun",
+    "category": "Fitness Equipment"
+  },
+  "B0BSHF7COF1": {
+    "name": "Breville Barista Express Espresso Machine",
+    "category": "Coffee Makers"
+  },
+  "B0BSHF7TRV1": {
+    "name": "Peak Design Travel Backpack 30L",
+    "category": "Travel Gear"
+  },
+  "B07L3W825Q": {
+    "name": "Instant Pot Duo 7-in-1",
+    "category": "Kitchen Gadgets"
+  },
+  "B0BSHF7SEC1": {
+    "name": "Ring Video Doorbell Pro 2",
+    "category": "Security Cameras"
+  },
+  "B0BSHF7SEC2": {
+    "name": "Wyze Cam v3 4-Pack",
+    "category": "Security Cameras"
+  },
+  "B0BSHF7FIT1": {
+    "name": "Fitbit Charge 6",
+    "category": "Fitness Trackers"
+  },
+  "B0BSHF7OFF1": {
+    "name": "Herman Miller Aeron Chair",
+    "category": "Office Supplies"
+  },
+  "B0BSHF7OFF2": {
+    "name": "AmazonBasics Laptop Stand",
+    "category": "Office Supplies"
+  },
+  "B0BSHF7AUD1": {
+    "name": "JBL Charge 5 Speaker",
+    "category": "Speakers"
+  },
+  "B0BSHF7AUD2": {
+    "name": "Anker Soundcore Motion+",
+    "category": "Speakers"
+  },
+  "B0B1LVT8JQ": {
+    "name": "Sony ZV-E10 Mirrorless Camera",
+    "category": "Cameras"
+  },
+  "B0BSHF7GAR1": {
+    "name": "AeroGarden Harvest Elite",
+    "category": "Garden Tools"
+  },
+  "B0BSHF7GAR2": {
+    "name": "Fiskars Step Spade Shovel",
+    "category": "Garden Tools"
+  }
+}
