@@ -13,7 +13,7 @@ export async function generateTwitterThreads(articles) {
   // Pick top review articles for threading
   const reviews = articles.filter(a => 
     a.type === 'product' && !a.key.includes('deal') && !a.key.includes('vs')
-  ).slice(0, 50);
+  ).slice(0, 15);
   
   let totalThreads = 0;
   
