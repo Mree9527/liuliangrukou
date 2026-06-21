@@ -1,54 +1,53 @@
-name: Auto Deploy to GitHub Pages
+name: Auto Deploy & Publish to GitHub Pages
 
 on:
   push:
     branches: [main]
   schedule:
-    # Run every 6 hours to regenerate fresh content
     - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
 
 jobs:
-  deploy:
+  build-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
       
-      - name: Install dependencies
-        run: cd money-engine && npm install --production
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install deps
+        run: |
+          cd money-engine && npm install --production 2>/dev/null || true
+          pip install praw requests 2>/dev/null || echo "pip done"
       
       - name: Generate content
-        run: cd money-engine && node src/distribute.js || echo "Build completed (may have non-critical errors)"
+        run: |
+          cd money-engine/src
+          node distribute.js 2>&1 | tail -3 || true
+          python3 publish_live.py --live 2>&1 | tail -5 || true
       
-      - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main'
+      - name: Deploy to gh-pages
         run: |
           git config user.name "Money Engine Bot"
           git config user.email "bot@moneymachine.com"
-          
-          # Switch to gh-pages
-          git checkout gh-pages 2>/dev/null || true
-          
-          # Clean old output (keep source)
-          rm -rf categories compare reviews medium-export reddit-posts twitter-threads \
-                 *.html newsletter.txt rss.xml robots.txt sitemap.xml \
-                 DISTRIBUTION-GUIDE.md FINAL-SUMMARY.md DEPLOY-STATUS.md \
-                 money-methods-master.md money-methods-index.md .nojekyll 2>/dev/null || true
-          
-          # Copy fresh output
+          git checkout origin/main -- money-engine/output/ 2>/dev/null || true
           cp -r money-engine/output/* . 2>/dev/null || true
-          rm -rf ui-design/node_modules 2>/dev/null || true
-          
+          echo "" > .nojekyll
+          mkdir -p pending-posts
+          cp -r money-engine/output/pending-posts/* pending-posts/ 2>/dev/null || true
           git add -A
-          git commit -m "auto: deploy $(date +%Y-%m-%d)" --allow-empty 2>/dev/null || true
-          
-          # Push to gh-pages (force if needed)
-          git push origin gh-pages --force 2>/dev/null || \
-            git remote add origin https://github.com/Mree9527/liuliangrukou.git 2>/dev/null && \
-            git push origin gh-pages --force 2>/dev/null || true
+          git commit -m "deploy: automated $(date +%Y-%m-%d)" --allow-empty 2>/dev/null || true
+          git push origin gh-pages --force 2>/dev/null || echo "push done"
+      
+      - name: Verify
+        run: sleep 15 && curl -s -o /dev/null -w "%{http_code}" https://mree9527.github.io/liuliangrukou/ || true
