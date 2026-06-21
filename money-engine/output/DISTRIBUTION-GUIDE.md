@@ -4,10 +4,10 @@
 
 | Channel | Items Ready | Est. Daily Traffic |
 |---------|------------|-------------------|
-| Amazon Affiliate Pages | 334 HTML files | Pending SEO traffic |
+| Amazon Affiliate Pages | 406 HTML files | Pending SEO traffic |
 | Reddit Posts | 20 posts | 100-5,000 clicks/day |
 | Twitter Threads | 20 threads | 500-5,000 visits/day |
-| Medium Articles | 334 export files | Pending approval/traffic |
+| Medium Articles | 406 export files | Pending approval/traffic |
 | Newsletter | 1 digest ready | Email-based |
 
 ## Quick Start — Next Actions

@@ -1,0 +1,72 @@
+🚀 REDDIT POSTING GUIDE — Copy-Paste Ready
+==========================================
+
+POSTING ORDER (Priority 1-5):
+These subreddits get the most engagement for product reviews.
+
+STEP 1: Post to these HIGH-TRAFFIC subreddits first:
+-------------------------------------------------------
+1. r/r/mechanicalkeyboards
+   Title: Is the Redragon K552 Kumara worth it in 2026? Here's my honest take.
+   📍 File: pending-posts/reddit_r/mechanicalkeyboards_0.txt
+
+2. r/r/MechanicalKeyboards
+   Title: Is the Keychron K2 Wireless worth it in 2026? Here's my honest take.
+   📍 File: pending-posts/reddit_r/MechanicalKeyboards_0.txt
+
+3. r/r/MacBookAir
+   Title: Is the MacBook Air M2 13" worth it in 2026? Here's my honest take.
+   📍 File: pending-posts/reddit_r/MacBookAir_0.txt
+
+4. r/r/headphones
+   Title: Is the Sony WF-1000XM5 worth it in 2026? Best ANC earbuds review.
+   📍 File: pending-posts/reddit_r/headphones_0.txt
+
+5. r/r/BudgetAudiophile
+   Title: Soundcore P20i at $24.99 - Best sub-$25 earbuds with ANC
+   📍 File: pending-posts/reddit_r/BudgetAudiophile_0.txt
+
+6. r/r/GamingSetup
+   Title: Redragon M913 Impact Wireless Mouse at $24.99 - Budget king?
+   📍 File: pending-posts/reddit_r/GamingSetup_0.txt
+
+7. r/r/buyitforlife
+   Title: Logitech MX Master 3S @ $79.99 - The last mouse you'll ever need
+   📍 File: pending-posts/reddit_r/buyitforlife_0.txt
+
+8. r/r/UltrawidenGaming
+   Title: Samsung Odyssey G5 34" ultrawide at $299.99 — Worth it?
+   📍 File: pending-posts/reddit_r/UltrawidenGaming_0.txt
+
+
+STEP 2: Post to deal-focused subreddits (high conversion):
+----------------------------------------------------------
+   r/r/buildapcsales: ASUS VivoBook 15 OLED at $429
+   r/r/Lenovo: Lenovo IdeaPad Slim 5 at $499
+   r/r/BudgetAesthetics: Redragon K552 @ $29.99
+
+STEP 3: Posting tips for maximum upvotes:
+------------------------------------------
+1. Don't post too fast — wait 30min between posts to same subreddit
+2. Engage with comments on your posts (reply to every comment!)
+3. Post during US peak hours: 8-11am ET, 5-9pm ET
+4. Include the full review link in a follow-up comment too (Reddit sometimes strips links)
+5. Add a personal touch: "I use this daily for X..." increases engagement
+
+STEP 4: Cross-post to Twitter/X:
+---------------------------------
+Copy threads from: pending-posts/twitter_*.txt
+Post 1 thread per day, spread across different product categories.
+
+STEP 5: Publish on Medium (SEO boost):
+---------------------------------------
+Export articles from: medium-export/ directory
+Publish to Medium.com with appropriate tags (#tech #gadgets #budget)
+
+==========================================
+💡 The Money Engine Site is LIVE at:
+https://mree9527.github.io/liuliangrukou/
+
+Every review page has Amazon affiliate links.
+Once people click through and buy, you earn commission!
+==========================================
