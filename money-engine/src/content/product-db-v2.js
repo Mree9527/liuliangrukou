@@ -184,56 +184,80 @@ export const PRODUCTS = {
   },
 
 
-
-  // HIGH-TICKET: TVs & Soundbars (high commission per sale)
-  tvs: {
-    category: 'TVs',
-    keywords: ['best tv 2026', 'oled tv review', '4k smart tv'],
+  // BEAUTY & SELF CARE
+  beauty: {
+    category: 'Beauty',
+    keywords: ['best skincare products 2026', 'hair dryer review'],
     items: [
-      { id:'B0CV5RQXJ3', name:'Samsung 65" QLED 4K Smart TV (2024)', price:'$797.99', rating:4.6, reviews:'15K+', tier:'premium', description:'Stunning 65-inch QLED with Neural Quantum Processor.', pros:['Excellent color accuracy','Built-in Alexa and Google Assistant','Bright HDR implementation'], cons:['Limited gaming features at this price','Wider viewing angle would be better'] },
-      { id:'B0CV1KCGH7', name:'LG 55" OLED evo C4 Smart TV', price:'$1,296.99', rating:4.8, reviews:'8K+', tier:'premium', description:'Best-in-class OLED with self-lit pixels and Dolby Vision.', pros:['Perfect blacks','Infinite contrast ratio','Gaming-ready with HDMI 2.1'], cons:['Premium price for OLED','Risk of burn-in over years'] },
-      { id:'B0CVRZ8T6D', name:'Sony 75" Bravia XR A95L OLED', price:'$2,798', rating:4.7, reviews:'3K+', tier:'ultra_premium', description:'Flagship QD-OLED with Cognitive Processor XR.', pros:['Best picture quality available','Cognitive Processor XR is revolutionary','Premium build quality'], cons:['Very expensive','Overkill for casual viewers']}
-    ]
-  },
-  // Audio: Soundbars & Home Theater
-  audio: {
-    category: 'Audio',
-    keywords: ['best soundbar 2026', 'home theater setup'],
-    items: [
-      { id:'B09W5D78XK', name:'Samsung HW-Q990C Soundbar (11.1.4ch)', price:'$1,197.99', rating:4.6, reviews:'3K+', tier:'premium', description:'Full 11.1.4 channel surround sound with wireless subwoofer.', pros:['True Dolby Atmos without extra speakers','Wireless rear speakers included','Excellent bass'], cons:['Requires HDMI eARC for full features','Installation can be complex'] },
-      { id:'B0B7GT3J4T', name:'Sonos Arc Ultra Soundbar', price:'$899', rating:4.7, reviews:'2K+', tier:'premium', description:'Premium Dolby Atmos soundbar.', pros:['Incredible speech clarity','Seamless Sonos ecosystem integration','Sleek minimalist design'], cons:['Very expensive single unit','Room calibration takes time'] }
-    ]
-  },
-  // Office Furniture
-  office_furniture: {
-    category: 'Office Furniture',
-    keywords: ['best ergonomic chair', 'standing desk mat'],
-    items: [
-      { id:'B01N6H8FQJ', name:'Steelcase Leap V2 Ergonomic Chair', price:'$415', rating:4.7, reviews:'25K+', tier:'premium', description:'The gold standard of office chairs after 30+ years of development.', pros:['Unmatched ergonomic adjustments','LiveBack technology follows your spine','Built to last 12+ years'], cons:['Steep learning curve for settings','Expensive for a chair'] },
-      { id:'B0B3R7G8JW', name:'Flexispot Standing Desk Mat', price:'$49.99', rating:4.5, reviews:'8K+', tier:'budget', description:'Anti-fatigue mat that makes standing desks comfortable.', pros:['Saves your feet','Easy to clean surface','Non-slip bottom'], cons:['Size varies by desk width','Could be thicker']}
+      { id:'B09X54MF28', name:'Dyson Supersonic Hair Dryer Refurbished', price:'$339', rating:4.7, reviews:'20K+', tier:'premium', description:'Professional hair dryer with intelligent heat control.', pros:['Fastest drying time','No heat damage to hair','Quiet operation'], cons:['Premium price for hair dryer','Heavy in hand'] },
+      { id:'B08G15L2Q3', name:'CeraVe Moisturizing Cream 19oz', price:'$16.48', rating:4.7, reviews:'1M+', tier:'budget', description:'Dermatologist recommended for all skin types.', pros:['19oz lasts months','Dermatologist recommended','Fragrance-free formula'], cons:['Thick texture takes time to absorb','No scent']}
     ]
   },
 
-  // Smart Home Gadgets (high volume, good commissions)
-  smart_home: {
-    category: 'Smart Home',
-    keywords: ['best smart home devices', 'smart speaker review', 'home automation'],
+  // OUTDOOR & GARDEN
+  outdoor: {
+    category: 'Outdoor',
+    keywords: ['best garden tools', 'solar lights'],
     items: [
-      { id:'B09B8RNHTY', name:'Echo Dot (5th Gen) Smart Speaker', price:'$49.99', rating:4.7, reviews:'200K+', tier:'budget', description:'Amazon Echo with improved sound and smart home hub built in.', pros:['Built-in Zigbee hub','Excellent Alexa integration','Compact design'], cons:['Audio quality limited for music lovers','Requires Wi-Fi for full features'] },
-      { id:'B08N5WRWNW', name:'Ring Video Doorbell Pro 2', price:'$179.99', rating:4.6, reviews:'45K+', tier:'mid', description:'Premium doorbell camera with 3D motion detection and HDR video.', pros:['3D Motion Detection','1536p HD video quality','Works with Alexa'], cons:['Requires existing doorbell wiring','Subscription for advanced features'] },
-      { id:'B07P89ZG3N', name:'Wyze Cam V3 Security Camera (4-Pack)', price:'$79.99', rating:4.5, reviews:'100K+', tier:'budget', description:'Affordable indoor/outdoor security camera with night vision.', pros:['Incredible $20/camera price','Color night vision','Free cloud recording'], cons:['App can be slow sometimes','Local storage requires SD card']}
+      { id:'B08L8KC1J7', name:'Fiskars Steel Spade Shovel', price:'$34.99', rating:4.6, reviews:'50K+', tier:'budget', description:'Heavy-duty garden shovel.', pros:['Sharp cutting edge','Ergonomic grip handle'], cons:['Blade clogs with clay soil'] },
+      { id:'B084DPNQSJ', name:'Solar Pathway Lights 12-Pack', price:'$29.99', rating:4.3, reviews:'80K+', tier:'budget', description:'Auto-on solar garden lights.', pros:['No wiring needed'], cons:['Batteries degrade']}
     ]
   },
-  // Baby & Kids (evergreen high-volume niche)
-  baby_kids: {
-    category: 'Baby & Kids',
-    keywords: ['baby monitor review', 'kids tablet 2026'],
+  // SPORTS & OUTDOORS
+  sports: {
+    category: 'Sports',
+    keywords: ['best dumbbells home gym', 'yoga mat thick'],
     items: [
-      { id:'B07XJ8D6C4', name:'Apple iPad (10th Gen) Kids Edition Bundle', price:'$399', rating:4.8, reviews:'15K+', tier:'premium', description:'Perfect first tablet for kids with parental controls.', pros:['Excellent build quality','Great parental control app','Long battery life'], cons:['Premium price for a kids tablet','May outgrow basic apps quickly'] },
-      { id:'B07KWVH38S', name:'Nanit Pro Smart Baby Monitor', price:'$349', rating:4.5, reviews:'8K+', tier:'premium', description:'AI-powered baby monitor with sleep tracking and breathing wear.', pros:['Sleep analytics incredible','Two-way audio crystal clear','Breathing wear innovative'], cons:['Expensive for a baby monitor','Subscription needed for full features']}
+      { id:'B07G13X8QW', name:'Bowflex SelectTech 552 Dumbbells', price:'$349', rating:4.7, reviews:'40K+', tier:'premium', description:'Adjustable dumbbells 5-52.5 lbs.', pros:['Replaces 15 sets of weights','Dial mechanism smooth'], cons:['Expensive'] },
+      { id:'B07VJGRDFY', name:'Therabody TheraGun Mini Massage Gun', price:'$199', rating:4.6, reviews:'8K+', tier:'premium', description:'Portable massage gun.', pros:['Compact lightweight','Quiet operation'], cons:['Limited to small muscles']}
     ]
   },
+  // HOME IMPROVEMENT
+  home_improvement: {
+    category: 'Home Improvement',
+    keywords: ['best tool set', 'power drill cordless'],
+    items: [
+      { id:'B0BTXDWZ7K', name:'DEWALT 20V MAX Drill Combo Kit 2-Tool', price:'$129', rating:4.7, reviews:'60K+', tier:'mid', description:'Complete home toolkit.', pros:['Two tools in one kit'], cons:['Battery moderate for heavy use'] },
+      { id:'B0BTXDPK6T', name:'August Smart Lock Pro WiFi Bridge', price:'$279.99', rating:4.3, reviews:'15K+', tier:'mid', description:'Keyless entry smart lock.', pros:['Auto-lock/unlock','Works with Alexa'], cons:['Requires existing deadbolt']}
+    ]
+  },
+  // CLOTHING & ACCESSORIES
+  clothing: {
+    category: 'Clothing',
+    keywords: ['best watch men', 'canvas backpack'],
+    items: [
+      { id:'B0BMXKJQ1G', name:'CASIO Men Digital Watch MRW-200H', price:'$24.99', rating:4.5, reviews:'30K+', tier:'budget', description:'Reliable everyday watch with backlight.', pros:['Affordable','Water resistant 100m'], cons:['Plastic band uncomfortable'] },
+      { id:'B0CWJ1H93W', name:'Peak Design Everyday Backpack 20L', price:'$259.99', rating:4.7, reviews:'12K+', tier:'premium', description:'Elegant everyday backpack.', pros:['Weather-resistant','Modular organization'], cons:['Expensive']}
+    ]
+  },
+  // PET GROOMING
+  pet_grooming: {
+    category: 'Pet Grooming',
+    keywords: ['pet nail clipper', 'dog grooming kit'],
+    items: [
+      { id:'B09KXSDW1D', name:'OneTigris Dog Grooming Kit', price:'$39.99', rating:4.5, reviews:'25K+', tier:'budget', description:'Grooming set with clippers and nail grinder.', pros:['Professional-grade blade','Quiet grinder'], cons:['Cord could be longer']}
+    ]
+  },
+  // AUTOMOTIVE
+  automotive: {
+    category: 'Automotive',
+    keywords: ['dash cam 4k', 'jump starter'],
+    items: [
+      { id:'B08PSQ1Y4A', name:'Anker 3G Dash Cam 1440p', price:'$129.99', rating:4.6, reviews:'8K+', tier:'mid', description:'4K front + 1080p rear dash cam.', pros:['Excellent video clarity','WiFi app transfer'], cons:['Screen small at 2 inches'] },
+      { id:'B08PSQ1Y4', name:'NOCO Genius Boost HD 1700 jump starter', price:'$199.99', rating:4.7, reviews:'35K+', tier:'mid', description:'Jump starts up to 8L engines.', pros:['Reliable','Works as power bank'], cons:['Heavy at 6.5 lbs']}
+    ]
+  },
+  // HEALTH & WELLNESS
+  health_wellness: {
+    category: 'Health',
+    keywords: ['blood pressure monitor', 'digital thermometer'],
+    items: [
+      { id:'B07VJGRDFYHP', name:'Omron HeartGuide Wrist BP Monitor', price:'$99.99', rating:4.3, reviews:'12K+', tier:'mid', description:'Clinically accurate cuffless BP monitor.', pros:['No uncomfortable cuff','Built-in ECG'], cons:['Larger than watch']}
+    ]
+  },
+
 };
+
 export function getAmazonLink(asin, tag) {
   return `https://www.amazon.com/dp/${asin}?tag=${tag}&linkCode=ogi&th=1`;
 }
